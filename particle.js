@@ -106,8 +106,8 @@ class Particle {
     fill(255,205,148)
   }
     if(this.infected){
-      stroke(0, 255, 0)
-      fill(0, 255, 0)
+      stroke(255, 0, 0)
+      fill(255, 0, 0)
     }
     if(this.isPlayer){
       stroke(255, 215, 0)

@@ -12,19 +12,25 @@ let pause = false
 
 let particleSpeed = 3
 
-let testSound
 let testImage
+let INTROSCREEN
+let gameOver
+let introScreen = true
+let winScreen = true
+
+let won = false
 
 let exit
 
-//function preload() {
-//    soundFormats('mp3', 'ogg')
-//    //testSound = loadSound('1.mp3');
-//    testImage = loadImage('loo roll.jpg')
-//}
+function preload() {
+   testImage = loadImage('loo roll.jpg')
+   INTROSCREEN = loadImage('letterIntro2.jpg')
+   gameOver = loadImage('gameOver.jpg')
+   winScreen = loadImage('winScreen.jpg')
+}
 
 function setup() {
-createCanvas(1800, 900);
+createCanvas(1750, 880);
 
   cols = floor(width/w);
   rows = floor(height/w);
@@ -48,6 +54,12 @@ createCanvas(1800, 900);
     exit = new Exit()
 }
 
+function keyPressed(){
+    if(key == ' '){
+      introScreen = !introScreen
+    }
+  }
+
 /*function draw(){
   background(51)
 
@@ -65,7 +77,7 @@ createCanvas(1800, 900);
 
 function draw() {
 	if(!pause){
-	background(255)
+	background(0)
 	for(var i = 0; i < grid.length; i++){
 			grid[i].show()
 	}
@@ -73,9 +85,9 @@ function draw() {
 		wall.show()
 	}
   //draw entrance
-  fill(34, 34, 123)
-  stroke(34, 34 , 123)
-  rect(10, 10, w - 20, w - 20)
+  // fill(34, 34, 123)
+  // stroke(34, 34 , 123)
+  // rect(10, 10, w - 20, w - 20)
 
   exit.show()
   exit.checkIfWin()
@@ -114,6 +126,7 @@ function draw() {
 		player.look(walls)
 		player.update()
 		if(player.infected){
+      image(gameOver, 0, 0, 1920, 1080)
 			pause = true
 		}
 	}
@@ -184,5 +197,12 @@ function draw() {
 			// player.pos = createVector(initialPos, initialPos)
 		}
 	}
-    //image(testImage, 0, 0, 40, 40)
+  // fill(234, 33, 32)
+  // rect(0, 0, 1800, 880)
+  if(introScreen){
+  image(INTROSCREEN, 0, 0, 1920, 1080)
+  }
+  if(won){
+    image(winScreen, 0, 0, 1920, 1080)
+  }
 }

@@ -17,9 +17,10 @@ class Item {
     this.bought = false
   }
   show(){
-    stroke(255, 100, 0)
-    fill(255, 100, 0)
+    stroke(50, 0, 255)
+    fill(50, 0, 255)
     ellipse(this.pos.x, this.pos.y, 10)
+    image(testImage, this.pos.x - 20, this.pos.y - 20, 40, 40)
   }
   checkIfTouchingPlayer(){
     if(dist(this.pos.x, this.pos.y, player.pos.x, player.pos.y) < 10){
@@ -33,20 +34,22 @@ class Item {
 
 class Exit {
   constructor(){
-    this.pos = createVector((cols - 1) * w + w / 2, (rows - 1) * w + w / 2)
+    this.pos = createVector((cols - 1) * w + w / 2 , (rows - 1) * w + w / 2)
   }
   show(){
-    stroke(255, 65, 34)
-    fill(255, 65, 34)
+    stroke(100, 255, 100)
+    fill(100, 255, 100)
     if(items.length == 0){
-      stroke(0, 100, 255)
-      fill(0, 100, 255)
+      stroke(50, 255, 0)
+      fill(50, 255, 0)
     }
-    ellipse(this.pos.x, this.pos.y, 20)
+    rect(this.pos.x + 50 - w/2, this.pos.y + 50-w/2, this.pos.x + 10, this.pos.y + 10)
   }
   checkIfWin(){
-    if(items.length == 0 && dist(this.pos.x, this.pos.y, player.pos.x, player.pos.y) < 10){
+    if(items.length == 0 && dist(this.pos.x, this.pos.y, player.pos.x -30, player.pos.y-30) < 15){
       pause = true
+      won = true
+      image(winScreen, 0, 0, 1920, 1080)
       return true
     }else{
       return false

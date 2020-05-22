@@ -82,7 +82,7 @@ function Cell(i, j){
             //fill(255, 0, 255);
             //fill(34, 56, 75)
             //fill(175, 165, 176)
-            fill(51)
+            fill(0)
             rect(x, y, w, w);
         }
     }
